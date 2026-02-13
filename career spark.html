@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidyaguide | Career Planning & Resume Monitoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            background: #38bdf8;
+            color: black;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #0ea5e9;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 60px;
+            gap: 40px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h2 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-text span {
+            color: #38bdf8;
+        }
+
+        .hero-text p {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            padding: 10px 18px;
+            border: 2px solid #38bdf8;
+            border-radius: 8px;
+            background: transparent;
+            color: #38bdf8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #38bdf8;
+            color: black;
+        }
+
+        .hero-card {
+            width: 360px;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+        }
+
+        .hero-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #38bdf8;
+        }
+
+        .progress-box {
+            margin-top: 15px;
+        }
+
+        .progress-box p {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #cbd5e1;
+        }
+
+        .progress-bar {
+            height: 10px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(to right, #38bdf8, #0ea5e9);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .features p {
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: auto;
+            margin-bottom: 40px;
+            font-size: 15px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #38bdf8;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 60px;
+        }
+
+        .dashboard h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 35px;
+        }
+
+        .dash-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .resume-score {
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .resume-score h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 10px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            font-size: 26px;
+            font-weight: bold;
+            color: #38bdf8;
+            box-shadow: 0px 0px 15px rgba(56, 189, 248, 0.5);
+        }
+
+        .tips {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .activity {
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .activity h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .activity ul {
+            list-style: none;
+        }
+
+        .activity li {
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .dash-container {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <h1>Vidyaguide</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Career Planner</a>
+            <a href="#">Resume Monitor</a>
+            <a href="#">Dashboard</a>
+        </nav>
+        <button class="btn">Get Started</button>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Your Future Starts With <span>Vidyaguide</span></h2>
+            <p>
+                Plan your career path, track your resume performance, and get personalized
+                insights to improve your skills and job readiness.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn">Start Career Plan</button>
+                <button class="btn-outline">Upload Resume</button>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <h3>Resume Progress Tracker</h3>
+
+            <div class="progress-box">
+                <p>ATS Score</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 78%;"></div>
+                </div>
+            </div>
+
+            <div class="progress-box">
+                <p>Skills Matching</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%;"></div>
+                </div>
+            </div>
+
+            <div class="progress-box">
+                <p>Profile Completion</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <h2>Why Choose Vidyaguide?</h2>
+        <p>
+            Vidyaguide provides smart career planning and resume monitoring tools
+            to help you stand out in job interviews and placements.
+        </p>
+
+        <div class="feature-grid">
+            <div class="card">
+                <h3>Career Roadmap</h3>
+                <p>Get step-by-step guidance for your dream career path with learning milestones.</p>
+            </div>
+
+            <div class="card">
+                <h3>Resume Score</h3>
+                <p>Check ATS compatibility and improve your resume based on industry requirements.</p>
+            </div>
+
+            <div class="card">
+                <h3>Skill Suggestions</h3>
+                <p>Get recommended skills and certifications to improve your profile strength.</p>
+            </div>
+
+            <div class="card">
+                <h3>Placement Tracker</h3>
+                <p>Track applications, interviews, and progress in a clean dashboard format.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <h2>Resume Monitoring Dashboard</h2>
+
+        <div class="dash-container">
+            <div class="resume-score">
+                <h3>Resume Score Overview</h3>
+                <div class="score-circle">78%</div>
+                <p class="tips">
+                    🔥 Tip: Add more action words, improve formatting, and include 2 more projects to boost score.
+                </p>
+            </div>
+
+            <div class="activity">
+                <h3>Recent Activity</h3>
+                <ul>
+                    <li>✅ Updated Resume Section: Skills</li>
+                    <li>📌 Added Career Goal: Java Full Stack Developer</li>
+                    <li>📄 Resume scanned for ATS Score</li>
+                    <li>🎯 Suggested Skill: Spring Boot Microservices</li>
+                    <li>🏆 Completed Milestone: Internship Experience Added</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Vidyaguide | Career Planning & Resume Monitoring UI | Designed for Project Frontend
+    </footer>
+
+</body>
+</html>
